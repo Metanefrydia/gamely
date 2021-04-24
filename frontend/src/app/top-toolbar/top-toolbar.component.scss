@@ -1,0 +1,16 @@
+mat-toolbar {
+    background-color: #121212;
+    color: white;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+:host ::ng-deep .mat-stroked-button {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+button {
+    margin-left: 20px;
+}
