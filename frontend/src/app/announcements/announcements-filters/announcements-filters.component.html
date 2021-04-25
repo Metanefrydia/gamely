@@ -1,0 +1,55 @@
+<div class="main-filters-container">
+  <div class="filters-container">
+    <h3 class="title">{{ 'Filtruj' | uppercase }}</h3>
+    <div class="group-filters">
+      <mat-form-field appearance="fill">
+        <mat-label>Gra</mat-label>
+        <mat-select [(value)]="selectedGame">
+          <mat-option *ngFor="let game of games" [value]="game">
+            {{ game.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tryb</mat-label>
+        <mat-select>
+          <mat-option [value]="modes.RANKED">
+            {{ modes.RANKED }}
+          </mat-option>
+          <mat-option [value]="modes.UNRANKED">
+            {{ modes.UNRANKED }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Rank</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let rank of selectedGame.ranks" [value]="rank">
+            {{ rank }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="sort-container">
+    <h3 class="title">{{ 'Sortuj' | uppercase }}</h3>
+    <mat-form-field appearance="fill">
+      <mat-label>Sortuj</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let option of sortOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
