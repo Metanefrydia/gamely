@@ -7,7 +7,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public details: UserDetails | undefined;
+  public details: UserDetails;
 
   constructor(private auth: AuthenticationService) {}
 

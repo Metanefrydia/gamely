@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private token = '';
+  private token;
 
   public constructor(private http: HttpClient, private router: Router) {}
 
@@ -38,7 +38,7 @@ export class AuthenticationService {
   public getUserDetails(): UserDetails | null {
     const token = this.getToken();
     let payload;
-    if (token) {
+    if (token !== undefined && token !== null) {
       payload = token.split('.')[1];
       payload = window.atob(payload);
       return JSON.parse(payload);
@@ -62,8 +62,8 @@ export class AuthenticationService {
   }
 
   private getToken(): string {
-    if (!this.token) {
-      this.token = JSON.parse(localStorage.getItem('mean-token') || '{}');
+    if (this.token !== undefined && this.token !== null) {
+      this.token = localStorage.getItem('mean-token');
     }
     return this.token;
   }
