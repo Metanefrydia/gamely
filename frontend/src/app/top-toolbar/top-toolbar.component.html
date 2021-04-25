@@ -1,5 +1,10 @@
 <mat-toolbar>
-    <span class="spacer"></span>
-    <button mat-flat-button color="primary">{{ 'Załóż konto' | uppercase }}</button>
-    <button mat-stroked-button color="primary">{{ 'Zaloguj się' | uppercase }} </button>
+  <span class="spacer"></span>
+  <button *ngIf="!isLoggedIn()" mat-flat-button color="primary" routerLink='/register'
+    routerLinkActive="active">{{ 'Załóż konto' | uppercase }}</button>
+  <button *ngIf="!isLoggedIn()" mat-stroked-button color="primary" routerLink='/login'
+    routerLinkActive="active">{{ 'Zaloguj się' | uppercase }} </button>
+
+  <button *ngIf="isLoggedIn()" mat-stroked-button color="primary"
+    (click)="handleLogout()">{{ 'Wyloguj się' | uppercase }} </button>
 </mat-toolbar>

@@ -1,0 +1,27 @@
+<div class="form-container">
+  <h2>Utwórz konto</h2>
+  <form class="register-form"(submit)="register()">
+    <mat-form-field appearance="fill">
+      <mat-label for="name">Nick</mat-label>
+      <input matInput type="text" class="form-control" name="name" placeholder="Nick"
+        [(ngModel)]="credentials.name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="email">Email</mat-label>
+      <input matInput type="email" class="form-control" name="email" placeholder="Email"
+        [(ngModel)]="credentials.email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="password">Hasło</mat-label>
+      <input matInput type="password" class="form-control" name="password" placeholder="Hasło"
+        [(ngModel)]="credentials.password" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit">{{ 'Zarejestruj' | uppercase }}</button>
+  </form>
+</div>
+<div class="links">
+  <div class="link">
+    <p>Masz już konto?</p>
+    <a href="/login">{{ 'Zaloguj się' | uppercase }}</a>
+  </div>
+</div>

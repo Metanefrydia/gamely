@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>Zaloguj się</h2>
+  <form class="login-form" (submit)="login()">
+    <mat-form-field appearance="fill">
+      <mat-label for="email">Email</mat-label>
+      <input matInput type="email" class="form-control" name="email" placeholder="Email"
+        [(ngModel)]="credentials.email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label for="password">Hasło</mat-label>
+      <input matInput type="password" class="form-control" name="password" placeholder="Hasło"
+        [(ngModel)]="credentials.password" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit">{{ 'Zaloguj' | uppercase }}</button>
+  </form>
+</div>
+<div class="links">
+  <div class="link">
+    <p>Nie pamiętasz hasła?</p>
+    <a href="">{{ 'Przypomnij hasło' | uppercase }}</a>
+  </div>
+  <div class="link">
+    <p>Nie masz jeszcze konta?</p>
+    <a href="/register">{{ 'Zarejestruj się' | uppercase }}</a>
+  </div>
+</div>
