@@ -1,5 +1,6 @@
 const ctrlAuth = require('../controllers/authentication');
 const ctrlProfile = require('../controllers/profile');
+const ctrlAnnouncement = require('../controllers/announcements');
 
 const express = require('express');
 const router = express.Router();
@@ -18,6 +19,9 @@ router.get('/profile/', auth, ctrlProfile.profileRead);
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
+
+// announcement
+router.post('/announcement', ctrlAnnouncement.createAnnouncement)
 
 
 
