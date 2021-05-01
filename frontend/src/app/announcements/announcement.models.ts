@@ -1,24 +1,24 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-shadow */
 
-export class Announcement {
-  id: number;
-  title: string; // input
-  description: string; // text area
-  maxMembers: number; // input
-  date: Date; // date picker
-  type: AnnouncementType; // combo
-  mode: AnnouncementMode; // combo
-  game: string; // combo
-  rank: string; // combo
+export interface Announcement {
+  id?: number;
+  title: string;
+  game: string;
+  maxMembers: number;
+  date: Date;
+  type: AnnouncementType;
+  mode: AnnouncementMode;
+  rank?: string;
+  description?: string;
 }
 
 export enum AnnouncementType {
-  PUBLIC = 'Public',
-  PRIVATE = 'Private'
+  PUBLIC = 'Publiczny',
+  PRIVATE = 'Prywatny'
 }
 
 export enum AnnouncementMode {
-  RANKED = 'Ranked',
-  UNRANKED = 'Unranked'
+  RANKED = 'Rankingowy',
+  UNRANKED = 'Nierankingowy'
 }

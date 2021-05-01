@@ -1,0 +1,37 @@
+@import './src/theme.scss';
+@import './src/styles.scss';
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    flex-direction: column;
+}
+
+h2 {
+    color: white;
+}
+
+.form-container {
+    background-color: $background-gray;
+    border-radius: 5px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 30px 0 30px 0;
+}
+
+.create-announcement-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 330px;
+    margin-bottom: 10px;
+}

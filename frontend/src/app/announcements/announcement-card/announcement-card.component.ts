@@ -4,6 +4,7 @@ import {
   AnnouncementMode,
   AnnouncementType
 } from '../announcement.models';
+import { games } from '../game.models';
 
 @Component({
   selector: 'app-announcement-card',
@@ -21,7 +22,7 @@ export class AnnouncementCardComponent implements OnInit {
       date: new Date('2021-06-21'),
       type: AnnouncementType.PUBLIC,
       mode: AnnouncementMode.RANKED,
-      game: 'League of legends',
+      game: games[0].name,
       rank: 'Silver I'
     },
     {
@@ -33,7 +34,7 @@ export class AnnouncementCardComponent implements OnInit {
       date: new Date('2021-06-21'),
       type: AnnouncementType.PUBLIC,
       mode: AnnouncementMode.RANKED,
-      game: 'League of legends',
+      game: games[0].name,
       rank: 'Silver I'
     },
     {
@@ -45,7 +46,7 @@ export class AnnouncementCardComponent implements OnInit {
       date: new Date('2021-06-21'),
       type: AnnouncementType.PUBLIC,
       mode: AnnouncementMode.RANKED,
-      game: 'League of legends',
+      game: games[0].name,
       rank: 'Silver I'
     },
     {
@@ -57,7 +58,7 @@ export class AnnouncementCardComponent implements OnInit {
       date: new Date('2021-06-21'),
       type: AnnouncementType.PUBLIC,
       mode: AnnouncementMode.RANKED,
-      game: 'League of legends',
+      game: games[0].name,
       rank: 'Silver I'
     }
   ];
