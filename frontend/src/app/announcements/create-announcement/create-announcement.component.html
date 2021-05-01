@@ -1,0 +1,74 @@
+<div class="form-container">
+  <h2>Utwórz ogłoszenie</h2>
+  <form class="create-announcement-form" (submit)="createAnnouncement()">
+    <!-- TYTUŁ -->
+    <mat-form-field appearance="fill">
+      <mat-label for="title">Tytuł</mat-label>
+      <input matInput type="string" class="form-control" name="title" placeholder="Tytuł"
+        [(ngModel)]="announcementData.title" />
+    </mat-form-field>
+    <!-- GRA -->
+    <mat-form-field appearance="fill">
+      <mat-label>Gra</mat-label>
+      <mat-select [(ngModel)]="announcementData.game" name="game">
+        <mat-option *ngFor="let game of games" [value]="game.name">
+          {{ game.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- TRYB -->
+    <mat-form-field appearance="fill">
+      <mat-label>Tryb</mat-label>
+      <mat-select [(ngModel)]="announcementData.mode" name="mode">
+        <mat-option value="Rankingowy">
+          {{ 'Rankingowy' }}
+        </mat-option>
+        <mat-option value="Nierankingowy">
+          {{ 'Nierankingowy' }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- TYP -->
+    <mat-form-field appearance="fill">
+      <mat-label>Typ</mat-label>
+      <mat-select [(ngModel)]="announcementData.type" name="type">
+        <mat-option value="Publiczny">
+          {{ 'Publiczny' }}
+        </mat-option>
+        <mat-option value="Prywatny">
+          {{ 'Prywatny' }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- RANGA -->
+    <mat-form-field appearance="fill">
+      <mat-label>Ranga</mat-label>
+      <mat-select [(ngModel)]="announcementData.rank" name="rank" [disabled]="shouldDisableRankControl()">
+        <mat-option *ngFor="let rank of getRanks(announcementData.game)" [value]="rank">
+          {{ rank }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- LICZBA GRACZY -->
+    <mat-form-field appearance="fill">
+      <mat-label for="players">Liczba graczy</mat-label>
+      <input matInput type="number" class="form-control" name="players" placeholder="Liczba graczy" [min]="1" [max]="20"
+        [(ngModel)]="announcementData.maxMembers" />
+    </mat-form-field>
+    <!-- DATA -->
+    <mat-form-field appearance="fill">
+    <mat-label for="date">Data</mat-label>
+      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Data" [(ngModel)]="announcementData.date" name="date"
+        [min]="minDate" [max]="maxDate">
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+    <!-- OPIS -->
+    <mat-form-field appearance="fill">
+      <mat-label>Opis</mat-label>
+      <textarea matInput placeholder="Opis" type="text" name="description" [(ngModel)]="announcementData.description"
+        [rows]="4"></textarea>
+    </mat-form-field>
+    <button mat-flat-button color="accent" type="submit">{{ 'Dodaj ogłoszenie' | uppercase }}</button>
+  </form>
+</div>

@@ -32,7 +32,6 @@ app.use((req, res, next) => {
 
 app.use((err, req, res) => {
   if (err.name === 'UnauthorizedError') {
-    console.log('halko');
     res.status(401);
     res.json({ message: `${err.name}: ${err.message}` });
   }

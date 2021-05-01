@@ -31,7 +31,7 @@ export class AuthenticationService {
 
   public logout(): void {
     this.token = '';
-    window.localStorage.removeItem('mean-token');
+    window.localStorage.removeItem('auth-token');
     this.router.navigateByUrl('/');
   }
 
@@ -57,13 +57,13 @@ export class AuthenticationService {
   }
 
   private saveToken(token: string): void {
-    localStorage.setItem('mean-token', token);
+    localStorage.setItem('auth-token', token);
     this.token = token;
   }
 
   private getToken(): string {
     if (this.token !== undefined && this.token !== null) {
-      this.token = localStorage.getItem('mean-token');
+      this.token = localStorage.getItem('auth-token');
     }
     return this.token;
   }

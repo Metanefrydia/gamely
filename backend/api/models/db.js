@@ -1,6 +1,7 @@
 require('./users');
+require('./announcement');
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost:27017/meanAuth';
+const dbURI = 'mongodb://localhost:27017/bdg-project';
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(dbURI, {
