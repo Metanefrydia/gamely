@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 const announcementSchema = new mongoose.Schema({
   title: {
@@ -8,6 +9,10 @@ const announcementSchema = new mongoose.Schema({
   description: {
       type: String,
       required: false, 
+  },
+  members: {
+      type: Number,
+      required: true
   },
   maxMembers: {
       type: Number,
@@ -32,6 +37,14 @@ const announcementSchema = new mongoose.Schema({
   rank: {
       type: String,
       required: false
+  },
+  createdAt: {
+      type: Date,
+      required: true
+  },
+  createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
   }
 });
 

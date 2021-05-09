@@ -1,22 +1,51 @@
-const mongoose = require('mongoose');
-const Announcement = mongoose.model('Announcement');
+const mongoose = require("mongoose");
+const Announcement = mongoose.model("Announcement");
+const User = mongoose.model("User");
 
-module.exports.createAnnouncement = (req, res) => {
-    const announcement = new Announcement();
+module.exports.createAnnouncement = async (req, res) => {
+  try {
+    const announcement = await Announcement.create(req.body);
+    const user = await User.findOneAndUpdate(
+      { _id: req.body.createdBy },
+      { $push: { createdAnnouncements: announcement._id } }
+    );
 
-    announcement.title = req.body.title;
-    announcement.description = req.body.description;
-    announcement.maxMembers = req.body.maxMembers;
-    announcement.date = req.body.date;
-    announcement.type = req.body.type;
-    announcement.mode = req.body.mode;
-    announcement.game = req.body.game;
-    announcement.rank = req.body.rank;
+    res.status(201).json({
+      status: "success",
+      data: { announcement: announcement },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
 
-    announcement.save(() => {
-        res.status(200);
-        res.json({
-            message: "Announcement created!"
-        })
-    })
-}
+module.exports.getAnnouncements = async (req, res) => {
+  try {
+    const announcements = await Announcement.find();
+
+    res.status(200).json({
+      status: "success",
+      results: announcements.length,
+      data: { announcements },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
+
+module.exports.updateUserAnnouncements = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.body);
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+};
