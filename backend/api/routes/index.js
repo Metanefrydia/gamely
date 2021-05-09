@@ -22,7 +22,6 @@ router.post('/login', ctrlAuth.login);
 
 // announcement
 router.post('/announcement', ctrlAnnouncement.createAnnouncement)
-
-
+router.get('/announcements', ctrlAnnouncement.getAnnouncements)
 
 module.exports = router;

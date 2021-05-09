@@ -47,6 +47,10 @@ export class AuthenticationService {
     }
   }
 
+  public getUserId(): string {
+    return this.getUserDetails()._id;
+  }
+
   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
     if (user) {

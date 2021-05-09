@@ -1,4 +1,6 @@
+import { AnnouncementsService } from './../service/announcements.service';
 import { Component, OnInit } from '@angular/core';
+import { Announcement } from '../announcement.models';
 
 @Component({
   selector: 'app-announcements-index',
@@ -6,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcements-index.component.scss']
 })
 export class AnnouncementsIndexComponent implements OnInit {
-  public constructor() {}
+  public announcements: any = [];
+  public constructor(private announcementService: AnnouncementsService) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.announcementService.getAnnouncements().subscribe((response) => {
+      this.announcements = response.data;
+    });
+  }
 }

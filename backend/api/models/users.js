@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  createdAnnouncements: [{
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+    default: []
+  }],
   hash: String,
   salt: String
 });

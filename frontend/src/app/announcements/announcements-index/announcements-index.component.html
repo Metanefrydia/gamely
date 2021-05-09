@@ -1,1 +1,3 @@
-<app-announcement-card></app-announcement-card>
+<div class="card-container">
+    <app-announcement-card *ngFor="let item of announcements.announcements" [announcement]="item"></app-announcement-card>
+</div>

@@ -12,4 +12,8 @@ export class AnnouncementsService {
   public createAnnouncement(announcement: Announcement): Observable<any> {
     return this.http.post(`/api/announcement`, announcement);
   }
+
+  public getAnnouncements(): Observable<any> {
+    return this.http.get(`api/announcements`);
+  }
 }

@@ -5,12 +5,15 @@ export interface Announcement {
   id?: number;
   title: string;
   game: string;
+  members: number;
   maxMembers: number;
   date: Date;
   type: AnnouncementType;
   mode: AnnouncementMode;
   rank?: string;
   description?: string;
+  createdAt: Date;
+  createdBy: string;
 }
 
 export enum AnnouncementType {

@@ -1,9 +1,14 @@
 @import './src/theme.scss';
 @import './src/styles.scss';
 
-.example-card {
-    max-width: 265px;
+.announcement-card {
+    width: 265px;
+    height: 300px;
     background-color: $background-gray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .game-logo {
@@ -22,14 +27,10 @@
     padding-top: 20px;
 }
 
-.card-container {
-    margin-top: 30px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-flow: row;
-    justify-items: center;
-    justify-content: left;
-    column-gap: 30px;
-    row-gap: 30px;
+:host ::ng-deep mat-card-title {
+    font-size: 18px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 19ch;
 }

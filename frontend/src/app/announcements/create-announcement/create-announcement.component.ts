@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import {
   Announcement,
@@ -6,6 +7,7 @@ import {
 } from '../announcement.models';
 import { games } from '../game.models';
 import { AnnouncementsService } from '../service/announcements.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-announcement',
@@ -19,9 +21,12 @@ export class CreateAnnouncementComponent implements OnInit {
     mode: AnnouncementMode.UNRANKED,
     type: AnnouncementType.PUBLIC,
     rank: '',
+    members: 1,
     maxMembers: 0,
     date: new Date(Date.now()),
-    description: ''
+    description: '',
+    createdAt: new Date(Date.now()),
+    createdBy: this.authenticationService.getUserId()
   };
 
   public games = games;
@@ -29,14 +34,21 @@ export class CreateAnnouncementComponent implements OnInit {
   public minDate = new Date(Date.now());
   public maxDate = new Date(this.minDate.getTime() + this.monthInMilliseconds);
 
-  public constructor(private announcementsService: AnnouncementsService) {}
+  public constructor(private router: Router, private announcementsService: AnnouncementsService, private authenticationService: AuthenticationService) {}
 
   public ngOnInit(): void {}
 
   public createAnnouncement(): void {
     this.announcementsService
       .createAnnouncement(this.announcementData)
-      .subscribe();
+      .subscribe(
+        () => {
+          this.router.navigateByUrl('/');
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
   }
 
   public getRanks(game: string): string[] {
