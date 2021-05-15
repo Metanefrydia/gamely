@@ -1,0 +1,112 @@
+@import './src/theme.scss';
+@import './src/styles.scss';
+
+:host {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10%;
+}
+
+h3 {
+    color: white;
+}
+
+h4 {
+    letter-spacing: 1.25px;
+}
+
+.container {
+    width: 90%;
+    height: 500px;
+    background-color: $background-gray;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.message-container {
+    height: 350px;
+    width: 90%;
+    background-color: $background-light-gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+}
+
+.message-details {
+    display: flex;
+    margin-left: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.sender {
+    margin-right: 10px;
+    font-weight: 'bold';
+}
+
+.message-input {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.message-form {
+    width: 93%;
+}
+
+.send-button {
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.text-chat {
+    margin-left: 40px;
+    width: 100%;
+}
+
+.members-section {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.members-container {
+    height: 415px;
+    border-radius: 5px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $background-light-gray;
+}
+
+.members {
+    padding: 10px
+}
+
+.member {
+    margin-bottom: 5px;
+}
+
+.me-member {
+    margin-bottom: 5px;
+    color: $primary;
+}
+
+.main-page-button {
+    width: 150px;
+    margin-bottom: 20px;
+}
