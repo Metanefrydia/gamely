@@ -9,6 +9,7 @@ const passport = require('passport');
 const path = require('path');
 
 const routesApi = require('./api/routes/index');
+const chatServer = require('./chat-server');
 
 const app = express();
 

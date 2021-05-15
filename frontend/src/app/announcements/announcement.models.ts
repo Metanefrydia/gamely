@@ -2,7 +2,7 @@
 /* eslint-disable no-shadow */
 
 export interface Announcement {
-  id?: number;
+  _id?: string;
   title: string;
   game: string;
   members: number;

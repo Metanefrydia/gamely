@@ -1,4 +1,4 @@
-import { AnnouncementsIndexComponent } from './announcements/announcements-index/announcements-index.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './authentication/guard/auth.guard';
@@ -17,7 +17,8 @@ const routes: Routes = [
     path: 'create-announcement',
     component: CreateAnnouncementComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  { path: 'chat-room/:id', component: ChatRoomComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

@@ -1,0 +1,46 @@
+<button mat-stroked-button color="primary" class="main-page-button" routerLink='/'
+  routerLinkActive="active">{{ 'Opuść pokój' | uppercase }}</button>
+<div class="container">
+  <!-- MESSAGES -->
+  <div class="text-chat">
+    <h4>{{ 'POKÓJ ' + room }}</h4>
+    <div class="message-container">
+      <div class="message" *ngFor="let m of messages">
+        <div class="message-details" [ngClass]="{ me: m.id === name }">
+          <div class="sender">{{ m.id }}</div>
+          <div class="message-text">{{ m.message }}</div>
+        </div>
+      </div>
+    </div>
+    <!-- MESSAGE INPUT -->
+    <div class="message-input" *ngIf="room !== ''">
+      <form class="message-form">
+        <mat-form-field appearance="fill">
+          <input matInput placeholder="Napisz coś..." [value]="msg" (keyup.enter)="sendMessage(msg)"
+            (input)="msg = $any($event.target).value">
+        </mat-form-field>
+      </form>
+      <button mat-mini-fab color="primary" class="send-button" aria-label="Send message" (click)="sendMessage(msg)">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- MEMBERS -->
+  <div class="members-section">
+    <h4 style="margin-left: 23%">{{ 'Uczestnicy' | uppercase }} </h4>
+    <div class="members-container">
+      <div class="members">
+        <div *ngFor="let member of members" [ngClass]="{'me-member': member === name}" class="member">{{ member }}</div>
+      </div>
+      <div>
+        <button mat-flat-button color="primary" class="main-page-button"
+          *ngIf="remoteStreams.length === 0 && room !== ''" (click)="startCall()">{{ 'Połącz' | uppercase }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<video style="visibility: hidden" id="me" height="1" width="1" [srcObject]="localStream" autoplay muted
+  [volume]="0"></video>
+<video *ngFor="let stream of remoteStreams; let i = index" style="visibility: hidden" id="me" height="1" width="1"
+  [srcObject]="stream" autoplay muted></video>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Announcement } from '../announcement.models';
 
 @Component({
@@ -8,4 +9,10 @@ import { Announcement } from '../announcement.models';
 })
 export class AnnouncementCardComponent {
   @Input() public announcement: Announcement;
+
+  public constructor(private router: Router){}
+
+  public openChatRoom(announcementId: string): void  {
+    this.router.navigate(['/chat-room', announcementId ]);
+  }
 }
