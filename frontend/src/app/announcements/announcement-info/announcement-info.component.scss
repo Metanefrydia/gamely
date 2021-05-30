@@ -1,0 +1,44 @@
+@import './src/theme.scss';
+@import './src/styles.scss';
+
+.info-row {
+    color: $secondary;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center
+}
+
+mat-chip-list {
+    margin-left: 10px;
+}
+
+.description {
+    color: $secondary
+}
+
+.description-field {
+    background-color: #616161;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    max-width: 450px;
+    white-space: normal;
+}
+
+.mat-dialog-actions {
+    justify-content: space-evenly;
+}
+
+.upper-content {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.members {
+    margin-left: 60px;
+}
+
+.section-title {
+    color: $secondary;
+    margin-bottom: 10px;
+}

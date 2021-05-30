@@ -7,6 +7,6 @@ export type IMsgType =
   | 'getMembers';
 export interface IMsg {
   type: IMsgType;
-  message: string;
+  text: string;
   id: string;
 }

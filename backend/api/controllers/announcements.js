@@ -9,14 +9,13 @@ module.exports.createAnnouncement = async (req, res) => {
       { _id: req.body.createdBy },
       { $push: { createdAnnouncements: announcement._id } }
     );
-
     res.status(201).json({
       status: "success",
       data: { announcement: announcement },
     });
   } catch (err) {
     res.status(400).json({
-      status: "fail",
+      status: "error",
       message: err,
     });
   }
@@ -25,7 +24,6 @@ module.exports.createAnnouncement = async (req, res) => {
 module.exports.getAnnouncements = async (req, res) => {
   try {
     const announcements = await Announcement.find();
-
     res.status(200).json({
       status: "success",
       results: announcements.length,
@@ -33,7 +31,7 @@ module.exports.getAnnouncements = async (req, res) => {
     });
   } catch (err) {
     res.status(404).json({
-      status: "fail",
+      status: "error",
       message: err,
     });
   }
