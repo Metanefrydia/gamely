@@ -1,13 +1,9 @@
-const WebSocket = require("ws").Server;
 const { v4: getID } = require("uuid");
+const WebSocket = require("ws").Server;
 const port = process.env.PORT || 2233;
-
 const CLIENTS = new Map();
-
 const ROOMS = new Map();
-
 const wss = new WebSocket({ port });
-console.log("ws:// listening on %d", port);
 
 wss.on("connection", (client) => {
   const id = getID();
@@ -15,7 +11,7 @@ wss.on("connection", (client) => {
   CLIENTS.set(id, client);
   const msg = {
     type: "connection",
-    message: "Welcome",
+    text: "Connection is established.",
     id: id,
   };
   client.send(JSON.stringify(msg));
@@ -28,7 +24,7 @@ wss.on("connection", (client) => {
       if (thisRoom.attendees.has(leave_id)) {
         const msg = {
           type: "leave",
-          message: "Bye",
+          text: "Bye",
           id: client.uid,
         };
         thisRoom.attendees.forEach((c) => {
@@ -50,7 +46,7 @@ wss.on("connection", (client) => {
     const room = msg.id;
     switch (msg.type) {
       case "connection":
-        client.name = msg.message;
+        client.name = msg.text;
         break;
       case "getMembers":
         let attendees = [];
@@ -59,7 +55,7 @@ wss.on("connection", (client) => {
           thisRoom.attendees.forEach((attendee) => {
             attendees.push(attendee.name)
           })
-          const m = {message: attendees, type: 'getMembers'}
+          const m = {text: attendees, type: 'getMembers'}
           thisRoom.attendees.forEach((attendee) => {
             attendee.send(JSON.stringify(m))
           })
@@ -90,7 +86,7 @@ wss.on("connection", (client) => {
         thisRoom.attendees.forEach((c) => {
           list.push({ name: c.name, id: c.uid });
         });
-        const m = { message: list, id: client.uid, type: "list" };
+        const m = { text: list, id: client.uid, type: "list" };
         thisRoom.attendees.forEach((c) => {
           c.send(JSON.stringify(m));
         });
@@ -98,8 +94,8 @@ wss.on("connection", (client) => {
       case "available":
         if (ROOMS.has(room)) {
           const thisRoom = ROOMS.get(room);
-          msg.id = msg.message;
-          msg.message = client.name;
+          msg.id = msg.text;
+          msg.text = client.name;
           thisRoom.attendees.forEach((c) => {
             console.log("call", c.name);
             if (c !== client) {

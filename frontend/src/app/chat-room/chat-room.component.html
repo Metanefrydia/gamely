@@ -8,7 +8,7 @@
       <div class="message" *ngFor="let m of messages">
         <div class="message-details" [ngClass]="{ me: m.id === name }">
           <div class="sender">{{ m.id }}</div>
-          <div class="message-text">{{ m.message }}</div>
+          <div class="message-text">{{ m.text }}</div>
         </div>
       </div>
     </div>
@@ -16,11 +16,11 @@
     <div class="message-input" *ngIf="room !== ''">
       <form class="message-form">
         <mat-form-field appearance="fill">
-          <input matInput placeholder="Napisz coś..." [value]="msg" (keyup.enter)="sendMessage(msg)"
+          <input matInput placeholder="Napisz coś..." [value]="msg" (keyup.enter)="sendSignal(msg)"
             (input)="msg = $any($event.target).value">
         </mat-form-field>
       </form>
-      <button mat-mini-fab color="primary" class="send-button" aria-label="Send message" (click)="sendMessage(msg)">
+      <button mat-mini-fab color="primary" class="send-button" aria-label="Send message" (click)="sendSignal(msg)">
         <mat-icon>send</mat-icon>
       </button>
     </div>

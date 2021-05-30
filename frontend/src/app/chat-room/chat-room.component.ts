@@ -1,9 +1,5 @@
 import { AuthenticationService } from './../authentication/authentication.service';
-import {
-  Component,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IMsg, IMsgType } from 'src/models/IMessage.js';
 import { IPeerJs } from 'src/models/peerJS.js';
 import { from, Subject } from 'rxjs';
@@ -11,6 +7,19 @@ import { mergeMap, takeUntil, tap } from 'rxjs/operators';
 import { WebSocketSubject } from 'rxjs/webSocket';
 import { environment } from 'src/environments/environment.js';
 import { ActivatedRoute } from '@angular/router';
+
+const mediaConstraints: MediaStreamConstraints = {
+  audio: {
+    autoGainControl: false,
+    channelCount: 2,
+    echoCancellation: false,
+    latency: 0,
+    noiseSuppression: false,
+    sampleRate: 48000,
+    sampleSize: 16
+  },
+  video: false
+};
 
 @Component({
   selector: 'app-chat-room',
@@ -46,7 +55,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
       (m) => {
         switch (m.type) {
           case 'connection':
-            if (m.message === 'Welcome') {
+            if (m.text === 'Welcome') {
               this.id = m.id;
             }
             this.getMembers();
@@ -63,7 +72,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
             this.getMembers();
             break;
           case 'getMembers':
-            this.members = m.message;
+            this.members = m.text;
             break;
         }
       },
@@ -82,44 +91,26 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   }
 
   public getMembers(): void {
-    this.sendMessage('', 'getMembers');
+    this.sendSignal('', 'getMembers');
   }
 
   public setName(value: string) {
     if (value) {
       this.name = value;
-      this.sendMessage(this.name, 'connection');
+      this.sendSignal(this.name, 'connection');
     }
   }
 
-  public initVideo() {
-    from(
-      navigator.mediaDevices.getUserMedia({
-        audio: {
-          autoGainControl: false,
-          channelCount: 2,
-          echoCancellation: false,
-          latency: 0,
-          noiseSuppression: false,
-          sampleRate: 48000,
-          sampleSize: 16,
-        },
-        video: false
-      })
-    )
+  public initAudio(): void {
+    from(navigator.mediaDevices.getUserMedia(mediaConstraints))
       .pipe(
         tap((stream) => (this.localStream = stream)),
-        mergeMap(() =>
-          // @ts-ignore
-          from(import('./../../assets/peer.js'))
-        )
+        mergeMap(() => from(import('./../../assets/peer.js')))
       )
       .pipe(takeUntil(this.end$))
       .subscribe((data) => {
         this.myPeer = new data.default(this.name) as IPeerJs;
-        this.myPeer.on('open', (id) => {
-          console.log(id);
-        });
+        this.myPeer.on('open', () => {});
         this.myPeer.on('call', (call) => {
           call.answer(this.localStream);
           this.connectToNewUser(call);
@@ -128,19 +119,19 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   }
 
   public startCall() {
-    this.sendMessage(this.name, 'available');
+    this.sendSignal(this.name, 'available');
   }
 
-  public sendMessage(message: string, type: IMsgType = 'message') {
-    this.socket.next({ type, id: this.room, message });
+  public sendSignal(text: string, type: IMsgType = 'message') {
+    this.socket.next({ type, id: this.room, text });
     this.msg = '';
   }
 
-  public setRoom(value: string) {
-    if (value) {
-      this.room = value;
-      this.sendMessage(this.room, 'join');
-      this.initVideo();
+  public setRoom(roomId: string) {
+    if (roomId) {
+      this.room = roomId;
+      this.sendSignal(this.room, 'join');
+      this.initAudio();
     }
   }
 

@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>{{data.announcement.title}}</h1>
+<div mat-dialog-content>
+  <div class="upper-content">
+    <div class="info">
+      <div class="section-title">Szczegóły:</div>
+      <div class="info-row">
+        <span>Tryb:</span>
+        <mat-chip-list aria-label="Announcement mode">
+          <mat-chip>{{ data.announcement.mode }}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="info-row" *ngIf="data.announcement.rank">
+        <span>Ranga:</span>
+        <mat-chip-list aria-label="Annoucnement rank">
+          <mat-chip>{{ data.announcement.rank }}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="info-row">
+        <span>Kiedy:</span>
+        <mat-chip-list aria-label="Announcement date">
+          <mat-chip>{{ data.announcement.date | date }}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+    <div class="members">
+      <div class="section-title">Uczestnicy (max: {{ data.announcement.maxMembers}}):</div>
+      <div *ngFor="let member of membersMock" class="info-row">
+        <span style="color: white">{{ member.username }}</span>
+        <mat-chip-list aria-label="Member rank">
+          <mat-chip>{{ member.rank }}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+  <div class="lower-content">
+    <span class="description">Opis: </span>
+    <div class="description-field">
+      {{ data.announcement.description }}
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close color="primary">{{ 'Powrót' | uppercase }}</button>
+  <button mat-flat-button color="primary"
+    (click)="openChatRoom(data.announcement._id)">{{ 'Dołącz' | uppercase }}</button>
+</div>

@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,13 +24,15 @@ import {
   NgxMatTimepickerModule,
   NgxMatNativeDateModule
 } from '@angular-material-components/datetime-picker';
+import { AnnouncementInfoComponent } from './announcement-info/announcement-info.component';
 
 @NgModule({
   declarations: [
     AnnouncementsIndexComponent,
     AnnouncementCardComponent,
     AnnouncementsFiltersComponent,
-    CreateAnnouncementComponent
+    CreateAnnouncementComponent,
+    AnnouncementInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import {
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [MatDatepickerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
