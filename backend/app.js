@@ -7,7 +7,7 @@ const express = require('express');
 const logger = require('morgan');
 const passport = require('passport');
 const path = require('path');
-// const cors = require('cors');
+const cors = require('cors');
 
 const routesApi = require('./api/routes/index');
 const chatServer = require('./chat-server');

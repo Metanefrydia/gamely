@@ -1,0 +1,68 @@
+<div class="main-container">
+    <form class="edit-profile-form" (submit)="editProfile()">
+        <div class="group-header">
+            <h2>Edytuj profil</h2>
+            <button mat-flat-button id="submit-button" color="accent" type="submit">{{ "Zapisz zmiany" | uppercase }}</button>
+        </div>
+        <div class="group-horizontal-container">
+            <div class="info-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nick</mat-label>
+                    <input [(ngModel)]="userData.name" matInput name="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input [(ngModel)]="userData.email" matInput name="email">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Rok urodzenia</mat-label>
+                    <input [(ngModel)]="userData.birthYear" type="number" matInput name="birth-year">
+                </mat-form-field>
+            </div>
+            <div class="description-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Opis</mat-label>
+                    <textarea [(ngModel)]="userData.description" [rows]="12" [cols]="20" placeholder="Napisz coś o sobie..." matInput name="description"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <h2>Twoje gry</h2>
+        <div class="games-container">
+            <div class="game" *ngFor="let userGame of userData.games; index as i">
+                <div class="group-game-form">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Gra</mat-label>
+                        <mat-select [(ngModel)]="userGame.game" [name]="'game-' + i">
+                        <mat-option *ngFor="let g of games" [value]="g.name">{{ g.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ranga</mat-label>
+                        <mat-select [(ngModel)]="userGame.rank" [name]="'rank-' + i">
+                        <mat-option *ngFor="let rank of getRanks(userGame.game)" [value]="rank">
+                            {{ rank }}
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ilość godzin w grze</mat-label>
+                        <input [(ngModel)]="userGame.numberOfHours" type="number" matInput [name]="'number-of-hours-' + i">
+                    </mat-form-field>
+                </div>
+
+                <button mat-mini-fab color="primary" id="delete-button" aria-label="Delete game button" type="button" (click)="deleteGame(userGame)">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <div class="game add-new-game">
+                <button mat-fab aria-label="Add game button" color="primary" type="button" (click)="addNewGame()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

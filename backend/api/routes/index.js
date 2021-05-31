@@ -15,13 +15,14 @@ const auth = jwt({
 
 // profile
 router.get('/profile/', auth, ctrlProfile.profileRead);
+router.put('/edit-profile', ctrlProfile.editProfile);
 
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
 // announcement
-router.post('/announcement', ctrlAnnouncement.createAnnouncement)
-router.get('/announcements', ctrlAnnouncement.getAnnouncements)
+router.post('/announcement', ctrlAnnouncement.createAnnouncement);
+router.get('/announcements', ctrlAnnouncement.getAnnouncements);
 
 module.exports = router;

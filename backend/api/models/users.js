@@ -18,6 +18,19 @@ const userSchema = new mongoose.Schema({
     required: false,
     default: []
   }],
+  games: [{
+      game: { type: String },
+      rank: { type: String},
+      numberOfHours: { type: Number}
+  }],
+  birthYear: {
+    type: Number, 
+    required: false
+  },
+  description: {
+    type: String, 
+    required: false
+  },
   hash: String,
   salt: String
 });

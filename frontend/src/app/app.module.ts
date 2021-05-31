@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
@@ -23,6 +24,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { MatIconModule } from '@angular/material/icon';
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     ProfileComponent,
     HomeComponent,
-    ChatRoomComponent
+    ChatRoomComponent,
+    EditProfileComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [MatDatepickerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

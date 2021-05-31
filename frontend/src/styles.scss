@@ -34,6 +34,16 @@ button {
   color: white;
 }
 
+.success-snackbar {
+  background: $background-light-gray;
+  color: $secondary-light;
+}
+
+.error-snackbar {
+  background: $background-light-gray;
+  color: $error;
+}
+
 // override autofill default styles
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

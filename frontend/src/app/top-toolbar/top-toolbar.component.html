@@ -7,4 +7,6 @@
 
   <button *ngIf="isLoggedIn()" mat-stroked-button color="primary"
     (click)="handleLogout()">{{ 'Wyloguj się' | uppercase }} </button>
+  <button *ngIf="isLoggedIn()" mat-flat-button color="primary" routerLink='/edit-profile'
+    routerLinkActive="active">{{ 'Twoje konto' | uppercase }} </button>
 </mat-toolbar>

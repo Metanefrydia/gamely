@@ -1,3 +1,4 @@
+import { UserData } from './../user/models/user.models';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,15 @@ import { map } from 'rxjs/operators';
 export class AuthenticationService {
   private token;
 
-  public constructor(private http: HttpClient, private router: Router) {}
+  public constructor(private http: HttpClient, private router: Router) {
+    if (localStorage.getItem('auth-token')) {
+      this.token = localStorage.getItem('auth-token');
+    }
+  }
+
+  public editProfile(userData: UserData): Observable<any> {
+    return this.http.put(`/api/edit-profile`, userData);
+  }
 
   public register(user: TokenPayload): Observable<any> {
     return this.request('post', 'register', user);

@@ -14,3 +14,21 @@ module.exports.profileRead = (req, res) => {
     });
   }
 };
+
+module.exports.editProfile = async (req, res) => {
+  try {
+    const id = req.body._id;
+    const userData = req.body;
+    const user = await User.findByIdAndUpdate(id, userData);
+
+    res.status(201).json({
+      status: "success",
+      data: { user: user },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "error",
+      message: err,
+    });
+  }
+}

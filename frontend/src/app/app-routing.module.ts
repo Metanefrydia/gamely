@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -18,7 +19,8 @@ const routes: Routes = [
     component: CreateAnnouncementComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'chat-room/:id', component: ChatRoomComponent, canActivate: [AuthGuard] }
+  { path: 'chat-room/:id', component: ChatRoomComponent, canActivate: [AuthGuard] },
+  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
