@@ -1,3 +1,4 @@
+import { AnnouncementsService } from './../announcements/service/announcements.service';
 import { AuthenticationService } from './../authentication/authentication.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IMsg, IMsgType } from 'src/models/IMessage.js';
@@ -47,7 +48,8 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
 
   public constructor(
     private authenticationService: AuthenticationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private announcementService: AnnouncementsService
   ) {}
 
   public ngOnInit(): void {
@@ -73,6 +75,7 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
             break;
           case 'getMembers':
             this.members = m.text;
+            this.updateAnnouncement();
             break;
         }
       },
@@ -88,6 +91,18 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((params) => {
       this.setRoom(params.get('id'));
     });
+  }
+
+  public updateAnnouncement(): void {
+    this.announcementService
+      .getAnnouncementById(this.room)
+      .subscribe((response) => {
+        let announcement = response.data.announcement;
+        announcement.members = this.members;
+        this.announcementService
+          .editAnnouncement(this.room, announcement)
+          .subscribe((response) => {});
+      });
   }
 
   public getMembers(): void {
@@ -147,6 +162,10 @@ export class ChatRoomComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
+    if (this.members.length === 1) {
+      this.members = [];
+      this.updateAnnouncement();
+    }
     this.end$.next(1);
   }
 }

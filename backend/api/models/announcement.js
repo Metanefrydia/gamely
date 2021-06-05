@@ -10,10 +10,10 @@ const announcementSchema = new mongoose.Schema({
       type: String,
       required: false, 
   },
-  members: {
-      type: Number,
-      required: true
-  },
+  members: [{
+      type: String,
+      required: false
+  }],
   maxMembers: {
       type: Number,
       required: true

@@ -34,8 +34,8 @@ export class AuthenticationService {
     return this.request('post', 'login', user);
   }
 
-  public profile(): Observable<any> {
-    return this.request('get', 'profile');
+  public getProfile(userName: string): Observable<any> {
+    return this.http.get(`/api/profile/${userName}`);
   }
 
   public logout(): void {
@@ -83,7 +83,7 @@ export class AuthenticationService {
 
   private request(
     method: 'post' | 'get',
-    type: 'login' | 'register' | 'profile',
+    type: 'login' | 'register',
     user?: TokenPayload
   ): Observable<any> {
     let base$;

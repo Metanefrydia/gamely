@@ -24,11 +24,8 @@
     </div>
     <div class="members">
       <div class="section-title">Uczestnicy (max: {{ data.announcement.maxMembers}}):</div>
-      <div *ngFor="let member of membersMock" class="info-row">
-        <span style="color: white">{{ member.username }}</span>
-        <mat-chip-list aria-label="Member rank">
-          <mat-chip>{{ member.rank }}</mat-chip>
-        </mat-chip-list>
+      <div *ngFor="let member of data.announcement.members" class="info-row">
+        <button mat-flat-button color="accent" (click)="openUserProfile(member)">{{ member }}</button>
       </div>
     </div>
   </div>

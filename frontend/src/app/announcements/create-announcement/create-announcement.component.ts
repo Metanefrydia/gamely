@@ -21,7 +21,7 @@ export class CreateAnnouncementComponent implements OnInit {
     mode: AnnouncementMode.UNRANKED,
     type: AnnouncementType.PUBLIC,
     rank: '',
-    members: 1,
+    members: [],
     maxMembers: 0,
     date: new Date(Date.now()),
     description: '',

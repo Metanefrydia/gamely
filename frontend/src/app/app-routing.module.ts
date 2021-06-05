@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:name', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'create-announcement',
     component: CreateAnnouncementComponent,

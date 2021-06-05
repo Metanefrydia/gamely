@@ -26,4 +26,12 @@ export class AnnouncementsService {
   public deleteAnnouncement(announcementId: string): Observable<any> {
     return this.http.delete(`api/announcement/${announcementId}`);
   }
+
+  public getAnnouncementById(announcementId: string): Observable<any> {
+    return this.http.get(`api/announcement/${announcementId}`);
+  }
+
+  public editAnnouncement(announcementId: string, announcement: Announcement): Observable<any> {
+    return this.http.put(`api/announcement/${announcementId}`, announcement);
+  }
 }

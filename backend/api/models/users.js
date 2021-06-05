@@ -20,8 +20,8 @@ const userSchema = new mongoose.Schema({
   }],
   games: [{
       game: { type: String },
-      rank: { type: String},
-      numberOfHours: { type: Number}
+      rank: { type: String },
+      numberOfHours: { type: Number }
   }],
   birthYear: {
     type: Number, 
