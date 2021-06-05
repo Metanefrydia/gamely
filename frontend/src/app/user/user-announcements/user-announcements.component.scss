@@ -1,0 +1,52 @@
+@import './src/theme.scss';
+@import './src/styles.scss';
+
+:host {
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container {
+    margin-bottom: 30px;
+    width: 90%;
+    background-color: $background-gray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.announcement-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 330px;
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+app-announcement-card {
+    margin: 10px;
+    border: solid 1px #323232;
+    border-radius: 5px;
+}
+
+.add-announcement {
+    display: flex;
+    width: 295px;
+    height: 330px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: $background-light-gray;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #323232;
+  }

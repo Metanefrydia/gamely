@@ -1,0 +1,112 @@
+@import './src/theme.scss';
+@import './src/styles.scss';
+
+:host {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.name-h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.game-h1 {
+    font-weight: 100;
+    margin: 0;
+}
+
+.birth-year-h3 {
+    font-weight: 100;
+    margin: 0;
+}
+
+.main-container {
+    width: 60%;
+    background-color: $background-gray;
+    display: flex;
+    padding: 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border-radius: 5px;
+    min-height: 300px;
+    justify-content: space-between;
+}
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.games {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 25px;
+    background-color: $background-light-gray;
+    border-radius: 5px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.group-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+}
+
+.game-rank {
+    margin-right: 15px;
+}
+
+.game-rank:empty {
+    display: none;
+}
+
+.description {
+    padding: 15px;
+    background-color: $background-light-gray;
+    border-radius: 5px;
+    width: 330px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+}
+
+.game {
+    display: flex;
+    margin: 20px 0px 20px 0px;
+}
+
+.game:first-child {
+    margin-top: 0px;
+}
+
+.game:last-child {
+    margin-bottom: 0px;
+}
+
+.group-game {
+    display: flex;
+    flex-direction: column; 
+    margin-left: 15px;
+}
+
+.group-game-info {
+    display: flex;
+    color: $light-gray;
+    letter-spacing: 1.25px;
+}
+
+img {
+    align-self: center;
+}

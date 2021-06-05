@@ -1,0 +1,32 @@
+<div class="main-container">
+  <div class="left-container">
+    <div class="info">
+      <img [src]="'./../../assets/img/avatar.png'">
+      <div class="group-info">
+        <h1 class="name-h1">{{ user?.name }}</h1>
+        <h3 class="birth-year-h3">{{ currentYear - user?.birthYear }} lata</h3>
+      </div>
+    </div>
+
+    <h1>O mnie</h1>
+    <div class="description">
+      {{ user?.description }}
+    </div>
+  </div>
+
+  <div class="right-container">
+    <h1>Ulubione gry</h1>
+    <div class="games">
+      <div *ngFor="let game of user?.games" class="game">
+        <img [src]="getGameLogo(game.game)">
+        <div class="group-game">
+          <h1 class="game-h1">{{ game.game }}</h1>
+          <div class="group-game-info">
+            <div class="game-rank">{{ game.rank | uppercase }}</div>
+            <div>{{ game.numberOfHours + ' godzin' | uppercase }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

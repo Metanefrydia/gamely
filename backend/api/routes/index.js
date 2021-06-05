@@ -14,7 +14,8 @@ const auth = jwt({
 });
 
 // profile
-router.get('/profile/', auth, ctrlProfile.profileRead);
+router.get('/profile', auth, ctrlProfile.getProfile);
+router.get('/user-announcements/:userId', ctrlProfile.getUserAnnouncements);
 router.put('/edit-profile', ctrlProfile.editProfile);
 
 // authentication
@@ -24,5 +25,6 @@ router.post('/login', ctrlAuth.login);
 // announcement
 router.post('/announcement', ctrlAnnouncement.createAnnouncement);
 router.get('/announcements', ctrlAnnouncement.getAnnouncements);
+router.delete('/announcement/:announcementId', ctrlAnnouncement.deleteAnnouncement);
 
 module.exports = router;

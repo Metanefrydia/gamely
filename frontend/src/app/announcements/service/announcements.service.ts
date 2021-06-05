@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Announcement } from './../announcement.models';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,11 +9,21 @@ import { Observable } from 'rxjs';
 export class AnnouncementsService {
   public constructor(private http: HttpClient) {}
 
+  public reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'No-Auth': 'True' });
+
   public createAnnouncement(announcement: Announcement): Observable<any> {
-    return this.http.post(`/api/announcement`, announcement);
+    return this.http.post(`/api/announcement`, announcement, { headers: this.reqHeader });
   }
 
   public getAnnouncements(): Observable<any> {
     return this.http.get(`api/announcements`);
+  }
+
+  public getUserAnnouncements(userId: string): Observable<any> {
+    return this.http.get(`api/user-announcements/${userId}`);
+  }
+
+  public deleteAnnouncement(announcementId: string): Observable<any> {
+    return this.http.delete(`api/announcement/${announcementId}`);
   }
 }

@@ -8,11 +8,12 @@ import { TopToolbarComponent } from './top-toolbar/top-toolbar.component';
 import { AnnouncementsModule } from './announcements/announcements.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './user/profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,7 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { MatIconModule } from '@angular/material/icon';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserAnnouncementsComponent } from './user/user-announcements/user-announcements.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     HomeComponent,
     ChatRoomComponent,
     EditProfileComponent,
-    UserProfileComponent
+    UserAnnouncementsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +60,8 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ],
   providers: [MatDatepickerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

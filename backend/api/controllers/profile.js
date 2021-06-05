@@ -1,16 +1,19 @@
-const mongoose = require('mongoose');
-const User = mongoose.model('User');
+const mongoose = require("mongoose");
+const User = mongoose.model("User");
+const Announcement = mongoose.model("Announcement");
 
-module.exports.profileRead = (req, res) => {
-  // If no user ID exists in the JWT return a 401
-  if (!req.payload._id) {
-    res.status(401).json({
-      message: 'UnauthorizedError: private profile'
+module.exports.getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.payload._id);
+
+    res.status(200).json({
+      status: "success",
+      user: user,
     });
-  } else {
-    // Otherwise continue
-    User.findById(req.payload._id).exec(function(err, user) {
-      res.status(200).json(user);
+  } catch (err) {
+    res.status(401).json({
+      status: "error",
+      message: err,
     });
   }
 };
@@ -31,4 +34,24 @@ module.exports.editProfile = async (req, res) => {
       message: err,
     });
   }
-}
+};
+
+module.exports.getUserAnnouncements = async (req, res) => {
+  try {
+    const id = req.params.userId;
+    const user = await User.findById(id);
+    const announcements = await Announcement.find({
+      _id: { $in: user.createdAnnouncements },
+    });
+
+    res.status(200).json({
+      status: "success",
+      userAnnouncements: announcements,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "error",
+      message: err,
+    });
+  }
+};

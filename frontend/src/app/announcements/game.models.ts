@@ -1,11 +1,13 @@
 export interface Game {
   name: string;
+  logo?: string;
   ranks: string[];
 }
 
 export const games: Game[] = [
   {
     name: 'League of legends',
+    logo: './../../assets/img/logo/league-of-legends-logo.png',
     ranks: [
       'Bronze V',
       'Bronze IV',
@@ -36,6 +38,7 @@ export const games: Game[] = [
   },
   {
     name: 'CS:GO',
+    logo: './../../assets/img/logo/cs-go-logo.png',
     ranks: [
       'Silver I',
       'Silver II',
@@ -58,14 +61,17 @@ export const games: Game[] = [
   },
   {
     name: 'Among us',
+    logo: './../../assets/img/logo/among-us-logo.png',
     ranks: []
   },
   {
     name: 'Fortnite',
+    logo: './../../assets/img/logo/fortnite-logo.png',
     ranks: []
   },
   {
     name: 'Overwatch',
+    logo: './../../assets/img/logo/overwatch-logo.png',
     ranks: [
       'Bronze',
       'Silver',
@@ -78,6 +84,7 @@ export const games: Game[] = [
   },
   {
     name: 'Apex Legends',
+    logo: './../../assets/img/logo/apex-logo.png',
     ranks: [
       'Bronze IV',
       'Bronze III',
@@ -100,6 +107,7 @@ export const games: Game[] = [
   },
   {
     name: 'Rocket League',
+    logo: './../../assets/img/logo/rocket-league-logo.png',
     ranks: [
       'Bronze III',
       'Bronze II',
@@ -127,6 +135,7 @@ export const games: Game[] = [
   },
   {
     name: 'Dota 2',
+    logo: './../../assets/img/logo/dota-2-logo.png',
     ranks: [
       'Herald',
       'Guardian',
@@ -140,6 +149,7 @@ export const games: Game[] = [
   },
   {
     name: 'Valorant',
+    logo: './../../assets/img/logo/valorant-logo.png',
     ranks: [
       'Iron III',
       'Iron II',

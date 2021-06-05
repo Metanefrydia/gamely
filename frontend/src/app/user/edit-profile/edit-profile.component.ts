@@ -24,8 +24,8 @@ export class EditProfileComponent implements OnInit {
   public constructor(private authService: AuthenticationService, private _snackBar: MatSnackBar) { }
 
   public ngOnInit(): void {
-    this.authService.profile().subscribe((user) => {
-      this.userData = user;
+    this.authService.profile().subscribe((response) => {
+      this.userData = response.user;
     })
   }
 
