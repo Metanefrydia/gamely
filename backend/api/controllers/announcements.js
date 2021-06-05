@@ -52,3 +52,38 @@ module.exports.deleteAnnouncement = async (req, res) => {
     });
   }
 };
+
+module.exports.getAnnouncement = async (req, res) => {
+  try {
+    const id = mongoose.Types.ObjectId(req.params.announcementId);
+    const announcement = await Announcement.findById(id);
+    
+    res.status(200).json({
+      status: "success",
+      data: { announcement },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "error",
+      message: err,
+    });
+  }
+};
+
+module.exports.editAnnouncement = async (req, res) => {
+  try {
+    const id = mongoose.Types.ObjectId(req.params.announcementId);
+    const announcementData = req.body;
+    const announcement = await Announcement.findByIdAndUpdate(id, announcementData);
+
+    res.status(201).json({
+      status: "success",
+      data: { announcement: announcement },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "error",
+      message: err,
+    });
+  }
+}

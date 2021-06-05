@@ -24,4 +24,9 @@ export class AnnouncementInfoComponent implements OnInit {
     this.dialog.closeAll();
     this.router.navigate(['/chat-room', announcementId ]);
   }
+
+  public openUserProfile(userName: string): void {
+    this.dialog.closeAll();
+    this.router.navigate(['/profile/', userName ]);
+  }
 }

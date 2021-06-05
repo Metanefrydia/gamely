@@ -5,7 +5,7 @@
       <img [src]="getGameLogo(announcement.game)">
     </div>
     <mat-card-title>{{ announcement.title }}</mat-card-title>
-    <mat-card-subtitle>{{ announcement.members }} / {{ announcement.maxMembers }} osób</mat-card-subtitle>
+    <mat-card-subtitle>{{ announcement.members.length }} / {{ announcement.maxMembers }} osób</mat-card-subtitle>
   </mat-card-header>
   <mat-chip-list>
     <span class="chip-description">Tryb:</span>

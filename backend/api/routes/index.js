@@ -5,16 +5,8 @@ const ctrlAnnouncement = require('../controllers/announcements');
 const express = require('express');
 const router = express.Router();
 
-const jwt = require('express-jwt');
-
-const auth = jwt({
-  secret: 'MY_SECRET',
-  userProperty: 'payload',
-  algorithms: ['HS256']
-});
-
 // profile
-router.get('/profile', auth, ctrlProfile.getProfile);
+router.get('/profile/:userName', ctrlProfile.getProfile);
 router.get('/user-announcements/:userId', ctrlProfile.getUserAnnouncements);
 router.put('/edit-profile', ctrlProfile.editProfile);
 
@@ -24,7 +16,9 @@ router.post('/login', ctrlAuth.login);
 
 // announcement
 router.post('/announcement', ctrlAnnouncement.createAnnouncement);
+router.get('/announcement/:announcementId', ctrlAnnouncement.getAnnouncement);
 router.get('/announcements', ctrlAnnouncement.getAnnouncements);
 router.delete('/announcement/:announcementId', ctrlAnnouncement.deleteAnnouncement);
+router.put('/announcement/:announcementId', ctrlAnnouncement.editAnnouncement);
 
 module.exports = router;

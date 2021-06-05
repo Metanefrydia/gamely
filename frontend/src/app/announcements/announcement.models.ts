@@ -5,7 +5,7 @@ export interface Announcement {
   _id?: string;
   title: string;
   game: string;
-  members: number;
+  members: string[];
   maxMembers: number;
   date: Date;
   type: AnnouncementType;

@@ -4,7 +4,7 @@ const Announcement = mongoose.model("Announcement");
 
 module.exports.getProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.payload._id);
+    const user = await User.findOne({ name: req.params.userName });
 
     res.status(200).json({
       status: "success",

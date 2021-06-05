@@ -25,6 +25,7 @@ import {
   NgxMatNativeDateModule
 } from '@angular-material-components/datetime-picker';
 import { AnnouncementInfoComponent } from './announcement-info/announcement-info.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AnnouncementInfoComponent } from './announcement-info/announcement-info
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    AppRoutingModule
   ],
   providers: [MatDatepickerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

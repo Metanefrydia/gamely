@@ -8,7 +8,7 @@
   <button *ngIf="isLoggedIn()" color="primary" class="profile-button" mat-flat-button [matMenuTriggerFor]="menu">{{ getUserName() }}</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink='/user-announcements' routerLinkActive="active">Twoje ogłoszenia</button>      
-    <button mat-menu-item routerLink='/profile' routerLinkActive="active">Twoje konto</button>
+    <button mat-menu-item (click)="openUserProfile()">Twoje konto</button>
     <button mat-menu-item routerLink='/edit-profile' routerLinkActive="active">Edytuj profil</button>
   </mat-menu>
 
