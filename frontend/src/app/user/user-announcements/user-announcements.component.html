@@ -1,0 +1,13 @@
+<div class="main-container">
+  <h1>Twoje ogłoszenia</h1>
+  <div class="announcement-container">
+    <app-announcement-card *ngFor="let announcement of userAnnouncements" [announcement]="announcement" [canDelete]="true" (deleteAnnouncement)="handleDelete($event)">
+    </app-announcement-card>
+    <div class="add-announcement">
+      <button mat-fab aria-label="Add game button" color="primary" type="button" routerLink='/create-announcement'
+        routerLinkActive="active">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

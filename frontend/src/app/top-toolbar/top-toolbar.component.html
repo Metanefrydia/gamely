@@ -1,10 +1,17 @@
 <mat-toolbar>
   <span class="spacer"></span>
-  <button *ngIf="!isLoggedIn()" mat-flat-button color="primary" routerLink='/register'
+  <button *ngIf="!isLoggedIn()" class="custom-button" mat-flat-button color="primary" routerLink='/register'
     routerLinkActive="active">{{ 'Załóż konto' | uppercase }}</button>
-  <button *ngIf="!isLoggedIn()" mat-stroked-button color="primary" routerLink='/login'
+  <button *ngIf="!isLoggedIn()" class="custom-button" mat-stroked-button color="primary" routerLink='/login'
     routerLinkActive="active">{{ 'Zaloguj się' | uppercase }} </button>
 
-  <button *ngIf="isLoggedIn()" mat-stroked-button color="primary"
+  <button *ngIf="isLoggedIn()" color="primary" class="profile-button" mat-flat-button [matMenuTriggerFor]="menu">{{ getUserName() }}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink='/user-announcements' routerLinkActive="active">Twoje ogłoszenia</button>      
+    <button mat-menu-item routerLink='/profile' routerLinkActive="active">Twoje konto</button>
+    <button mat-menu-item routerLink='/edit-profile' routerLinkActive="active">Edytuj profil</button>
+  </mat-menu>
+
+  <button *ngIf="isLoggedIn()" class="custom-button" mat-stroked-button color="primary"
     (click)="handleLogout()">{{ 'Wyloguj się' | uppercase }} </button>
 </mat-toolbar>

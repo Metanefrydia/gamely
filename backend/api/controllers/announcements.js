@@ -37,12 +37,17 @@ module.exports.getAnnouncements = async (req, res) => {
   }
 };
 
-module.exports.updateUserAnnouncements = async (req, res) => {
+module.exports.deleteAnnouncement = async (req, res) => {
   try {
-    const user = await User.findByIdAndUpdate(req.body);
+    const id = mongoose.Types.ObjectId(req.params.announcementId);
+    await Announcement.findByIdAndDelete({_id: id});
+
+    res.status(200).json({
+      status: "success"
+    });
   } catch (err) {
-    res.status(404).json({
-      status: "fail",
+      res.status(404).json({
+      status: "error",
       message: err,
     });
   }

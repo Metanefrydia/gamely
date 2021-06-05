@@ -7,12 +7,16 @@ import { AuthenticationService } from '../authentication/authentication.service'
   styleUrls: ['./top-toolbar.component.scss']
 })
 export class TopToolbarComponent implements OnInit {
-  public constructor(private auth: AuthenticationService) {}
+  public constructor(public auth: AuthenticationService) {}
 
   public ngOnInit(): void {}
 
   public handleLogout(): void {
     this.auth.logout();
+  }
+
+  public getUserName(): string {
+    return this.auth.getUserDetails().name;
   }
 
   public isLoggedIn(): boolean {

@@ -1,0 +1,90 @@
+@import './src/theme.scss';
+@import './src/styles.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  width: 90%;
+  background-color: $background-gray;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 5px;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.group-horizontal-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding: 0px 15px 0px 15px;
+}
+
+h2 {
+  color: white;
+}
+
+#submit-button {
+  height: 36px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 15px 0px 15px;
+  background-color: $background-light-gray;
+  border-radius: 5px;
+}
+
+.game {
+  display: flex;
+  width: 255px;
+  height: 210px;
+  margin: 15px;
+  padding: 15px 15px 0px 15px;
+  border-radius: 5px;
+  background-color: $background-light-gray;
+}
+
+.add-new-game {
+  justify-content: center;
+  align-items: center;
+}
+
+.games-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.group-games-form {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  resize: none;
+}
+
+.info-container mat-form-field {
+  width: 500px;
+}
+
+.description-container mat-form-field {
+  width: 650px;
+}
+
+#delete-button {
+  margin-left: 15px;
+}
