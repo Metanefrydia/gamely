@@ -10,7 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatMenuModule } from '@angular/material/menu';
@@ -27,6 +27,7 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
 import { MatIconModule } from '@angular/material/icon';
 import { EditProfileComponent } from './user/edit-profile/edit-profile.component';
 import { UserAnnouncementsComponent } from './user/user-announcements/user-announcements.component';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { UserAnnouncementsComponent } from './user/user-announcements/user-annou
     MatNativeDateModule,
     MatIconModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule
   ],
   providers: [MatDatepickerModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

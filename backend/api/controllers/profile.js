@@ -18,11 +18,34 @@ module.exports.getProfile = async (req, res) => {
   }
 };
 
+module.exports.getProfileById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    res.status(200).json({
+      status: "success",
+      user: user,
+    });
+  } catch (err) {
+    res.status(401).json({
+      status: "error",
+      message: err,
+    });
+  }
+}
+
 module.exports.editProfile = async (req, res) => {
   try {
+    let user;
     const id = req.body._id;
     const userData = req.body;
-    const user = await User.findByIdAndUpdate(id, userData);
+    userData.games = JSON.parse(req.body.games);
+    if (req.file) {
+      const imagePath = 'http://localhost:3000/images/' + req.file.filename;
+      user = await User.findByIdAndUpdate(id, { ...userData, imagePath });
+    } else {
+      user = await User.findByIdAndUpdate(id, userData);
+    }
 
     res.status(201).json({
       status: "success",

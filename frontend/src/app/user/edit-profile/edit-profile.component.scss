@@ -78,13 +78,19 @@ textarea {
 }
 
 .info-container mat-form-field {
-  width: 500px;
+  width: 450px;
 }
 
 .description-container mat-form-field {
-  width: 650px;
+  width: 550px;
 }
 
 #delete-button {
   margin-left: 15px;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
 }

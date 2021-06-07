@@ -1,10 +1,8 @@
-import { UserData } from './../user/models/user.models';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {
   UserDetails,
-  TokenResponse,
   TokenPayload
 } from './authentication.models';
 import { Observable } from 'rxjs';
@@ -22,8 +20,18 @@ export class AuthenticationService {
     }
   }
 
-  public editProfile(userData: UserData): Observable<any> {
-    return this.http.put(`/api/edit-profile`, userData);
+  public editProfile(_id: string, name: string, birthYear: number, games: any, image: File, email: string, description: string): Observable<any> {
+    const profileData = new FormData();
+    profileData.append("_id", _id);
+    profileData.append("name", name);
+    profileData.append("birthYear", birthYear.toString());
+    profileData.append("games",  JSON.stringify(games));
+    profileData.append("email", email);
+    profileData.append("description", description)
+    if (image) {
+      profileData.append("image", image);
+    }
+    return this.http.post<{ profile: any }>('/api/edit-profile', profileData);
   }
 
   public register(user: TokenPayload): Observable<any> {
@@ -36,6 +44,10 @@ export class AuthenticationService {
 
   public getProfile(userName: string): Observable<any> {
     return this.http.get(`/api/profile/${userName}`);
+  }
+
+  public getProfileById(id: string): Observable<any> {
+    return this.http.get(`/api/profile-id/${id}`)
   }
 
   public logout(): void {

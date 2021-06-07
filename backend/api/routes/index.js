@@ -2,13 +2,15 @@ const ctrlAuth = require('../controllers/authentication');
 const ctrlProfile = require('../controllers/profile');
 const ctrlAnnouncement = require('../controllers/announcements');
 
+const storage = require('../helpers/storage');
 const express = require('express');
 const router = express.Router();
 
 // profile
 router.get('/profile/:userName', ctrlProfile.getProfile);
+router.get('/profile-id/:id', ctrlProfile.getProfileById);
 router.get('/user-announcements/:userId', ctrlProfile.getUserAnnouncements);
-router.put('/edit-profile', ctrlProfile.editProfile);
+router.post('/edit-profile', storage, ctrlProfile.editProfile);
 
 // authentication
 router.post('/register', ctrlAuth.register);

@@ -11,5 +11,6 @@ export interface UserData {
     description?: string;
     birthYear?: number;
     games?: UserGame[];
+    imagePath: string;
     createdAnnouncements: string[];
 }
