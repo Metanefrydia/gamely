@@ -20,9 +20,13 @@ export class AnnouncementsIndexComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public fetchAnnouncements(): void {
-    this.subscription = this.announcementService.getAnnouncements().subscribe((response) => {
+  public fetchAnnouncements(filters = {game: null, rank: null}): void {
+    this.subscription = this.announcementService.getAnnouncements(filters).subscribe((response) => {
       this.announcements = response.data;
     });
+  }
+
+  public filterAnnouncements(filters): void {
+    this.fetchAnnouncements(filters);
   }
 }

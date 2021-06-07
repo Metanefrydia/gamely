@@ -19,7 +19,7 @@ router.post('/login', ctrlAuth.login);
 // announcement
 router.post('/announcement', ctrlAnnouncement.createAnnouncement);
 router.get('/announcement/:announcementId', ctrlAnnouncement.getAnnouncement);
-router.get('/announcements', ctrlAnnouncement.getAnnouncements);
+router.get('/announcements/:game/:rank', ctrlAnnouncement.getAnnouncements);
 router.delete('/announcement/:announcementId', ctrlAnnouncement.deleteAnnouncement);
 router.put('/announcement/:announcementId', ctrlAnnouncement.editAnnouncement);
 

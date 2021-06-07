@@ -69,7 +69,7 @@ export class EditProfileComponent implements OnInit {
       rank: '',
       numberOfHours: 0
     };
-    this.form.value.games = [...this.form.value.games, newGame];
+    this.form.controls["games"].setValue([...this.form.value.games, newGame]);
   }
 
   public deleteGame(game: UserGame) {
@@ -100,7 +100,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.form.value);
     this.authService
       .editProfile(
         this._id,

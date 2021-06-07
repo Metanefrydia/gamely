@@ -1,6 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Announcement } from '../announcement.models';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,17 +7,10 @@ import { Router } from '@angular/router';
   templateUrl: './announcement-info.component.html',
   styleUrls: ['./announcement-info.component.scss']
 })
-export class AnnouncementInfoComponent implements OnInit {
+export class AnnouncementInfoComponent {
   public dialogRef: MatDialogRef<AnnouncementInfoComponent>;
-  public membersMock = [
-    {username: 'Ania', rank: 'Silver I'}, {username: 'Tomek', rank: 'Bronze II'}, {username: 'Nyanne', rank: 'Gold V'}
-  ]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public router: Router, public dialog: MatDialog) {}
-
-  public ngOnInit(): void {
-    console.log(this.data);
-  }
 
   public openChatRoom(announcementId: string): void  {
     this.dialog.closeAll();

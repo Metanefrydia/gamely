@@ -23,7 +23,21 @@ module.exports.createAnnouncement = async (req, res) => {
 
 module.exports.getAnnouncements = async (req, res) => {
   try {
-    const announcements = await Announcement.find();
+    let announcements;
+    if (req.params.game !== 'null' && req.params.rank !== 'null') {
+      announcements = await Announcement.find({
+        "$expr": { 
+        "$and": [
+            { "$eq": ["$game", req.params.game] },
+            { "$eq": ["$rank", req.params.rank] }
+        ]
+      }});
+    } else if (req.params.game !== 'null') {
+      announcements = await Announcement.find({ game: req.params.game });
+    } else {
+      announcements = await Announcement.find();
+    }
+    
     res.status(200).json({
       status: "success",
       results: announcements.length,

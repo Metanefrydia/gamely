@@ -1,5 +1,6 @@
-import { AnnouncementMode } from './../announcement.models';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { games } from './../game.models';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-announcements-filters',
@@ -7,22 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./announcements-filters.component.scss']
 })
 export class AnnouncementsFiltersComponent implements OnInit {
-  public modes = AnnouncementMode;
-  public games = [
-    {
-      value: 'league-of-legends',
-      name: 'League of legends',
-      ranks: ['Brąz V', 'Brąz IV', 'Brąz III']
-    },
-    {
-      value: 'cs-go',
-      name: 'CS GO',
-      ranks: ['idk', 'idk2']
-    }
-  ];
-  public selectedGame: any = { value: '', name: '', ranks: [] };
-  public sortOptions = ['Najnowsze', 'Najstarsze'];
-  public constructor() {}
+  @Output() public filter = new EventEmitter();
+  public games = games;
+  public form: FormGroup;
 
-  public ngOnInit(): void {}
+  public constructor() {
+    this.initForm();
+  }
+
+  public ngOnInit(): void {
+    this.form.valueChanges.subscribe(val => {
+      this.filter.emit(val);
+    });
+  }
+
+  public initForm(): void {
+    this.form = new FormGroup({
+      game: new FormControl(null),
+      rank: new FormControl(null),
+    });
+  }
+
+  public getRanks(game: string): string[] {
+    return game ? this.games.find((item) => item.name === game).ranks : [];
+  }
 }
