@@ -15,8 +15,8 @@ export class AnnouncementsService {
     return this.http.post(`/api/announcement`, announcement, { headers: this.reqHeader });
   }
 
-  public getAnnouncements(): Observable<any> {
-    return this.http.get(`api/announcements`);
+  public getAnnouncements(filters): Observable<any> {
+    return this.http.get(`api/announcements/${filters.game}/${filters.rank}`);
   }
 
   public getUserAnnouncements(userId: string): Observable<any> {

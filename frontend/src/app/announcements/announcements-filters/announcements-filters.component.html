@@ -1,55 +1,35 @@
-<div class="main-filters-container">
+<form [formGroup]="form" class="main-filters-container">
+  <div class="group-info">
+    <h3 class="custom-h3">{{ 'Przeglądaj ogłoszenia lub ' | uppercase }}</h3>
+    <button mat-stroked-button color="primary" routerLink='/create-announcement'
+    routerLinkActive="active">{{ 'Dodaj nowe' | uppercase }}</button>
+  </div>
+
   <div class="filters-container">
-    <h3 class="title">{{ 'Filtruj' | uppercase }}</h3>
-    <div class="group-filters">
-      <mat-form-field appearance="fill">
+
+    <div class="group-filter">
+      <h3 class="custom-h3">{{ 'Filtruj' | uppercase }}</h3>
+      <button mat-stroked-button color="primary" type="reset">{{ 'Usuń filtry' | uppercase }}</button>
+    </div>
+
+    <div class="group-filter">
+      <mat-form-field class="form-field" appearance="fill">
         <mat-label>Gra</mat-label>
-        <mat-select [(value)]="selectedGame">
-          <mat-option *ngFor="let game of games" [value]="game">
+        <mat-select formControlName="game">
+          <mat-option *ngFor="let game of games" [value]="game.name">
             {{ game.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Tryb</mat-label>
-        <mat-select>
-          <mat-option [value]="modes.RANKED">
-            {{ modes.RANKED }}
-          </mat-option>
-          <mat-option [value]="modes.UNRANKED">
-            {{ modes.UNRANKED }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
+      <mat-form-field class="form-field" appearance="fill">
         <mat-label>Rank</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let rank of selectedGame.ranks" [value]="rank">
+        <mat-select formControlName="rank">
+          <mat-option *ngFor="let rank of getRanks(form.value.game)" [value]="rank">
             {{ rank }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
     </div>
-  </div>
-
-  <div class="sort-container">
-    <h3 class="title">{{ 'Sortuj' | uppercase }}</h3>
-    <mat-form-field appearance="fill">
-      <mat-label>Sortuj</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let option of sortOptions" [value]="option">
-          {{ option }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</div>
+    </div>
+</form>

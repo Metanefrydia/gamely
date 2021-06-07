@@ -45,14 +45,14 @@
         <div class="group-game-form">
           <mat-form-field appearance="fill">
             <mat-label>Gra</mat-label>
-            <mat-select [(ngModel)]="userGame.game" [ngModelOptions]="{standalone: true}" [name]="'game-' + i">
+            <mat-select [(value)]="userGame.game" [name]="'game-' + i">
               <mat-option *ngFor="let g of games" [value]="g.name">{{ g.name }}</mat-option>
             </mat-select>
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>Ranga</mat-label>
-            <mat-select [(ngModel)]="userGame.rank" [ngModelOptions]="{standalone: true}" [name]="'rank-' + i">
+            <mat-select [(value)]="userGame.rank" [name]="'rank-' + i">
               <mat-option *ngFor="let rank of getRanks(userGame.game)" [value]="rank">
                 {{ rank }}
               </mat-option>
@@ -61,7 +61,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Ilość godzin w grze</mat-label>
-            <input [(ngModel)]="userGame.numberOfHours" [ngModelOptions]="{standalone: true}" type="number" matInput
+            <input [(value)]="userGame.numberOfHours" type="number" matInput
               [name]="'number-of-hours-' + i">
           </mat-form-field>
         </div>

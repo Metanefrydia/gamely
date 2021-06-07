@@ -1,3 +1,5 @@
+<app-announcements-filters (filter)="filterAnnouncements($event)"></app-announcements-filters>
+
 <div class="card-container">
     <app-announcement-card *ngFor="let item of announcements.announcements" [announcement]="item"></app-announcement-card>
 </div>
