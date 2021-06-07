@@ -16,15 +16,13 @@ export class TopToolbarComponent implements OnInit {
     this.auth.logout();
   }
 
-  public getUserName(): string {
-    return this.auth.getUserDetails().name;
-  }
-
   public isLoggedIn(): boolean {
     return this.auth.isLoggedIn();
   }
 
   public openUserProfile(): void {
-    this.router.navigate(['/profile/', this.getUserName()]);
+    this.auth.getProfileById(this.auth.getUserId()).subscribe((response) => {
+      this.router.navigate(['/profile/', response.user.name]);
+    })
   }
 }

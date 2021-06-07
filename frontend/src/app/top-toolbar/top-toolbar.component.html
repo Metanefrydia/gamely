@@ -5,10 +5,10 @@
   <button *ngIf="!isLoggedIn()" class="custom-button" mat-stroked-button color="primary" routerLink='/login'
     routerLinkActive="active">{{ 'Zaloguj się' | uppercase }} </button>
 
-  <button *ngIf="isLoggedIn()" color="primary" class="profile-button" mat-flat-button [matMenuTriggerFor]="menu">{{ getUserName() }}</button>
+  <button *ngIf="isLoggedIn()" color="primary" class="profile-button" mat-flat-button [matMenuTriggerFor]="menu">{{ 'Twoje konto' | uppercase }}</button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink='/user-announcements' routerLinkActive="active">Twoje ogłoszenia</button>      
-    <button mat-menu-item (click)="openUserProfile()">Twoje konto</button>
+    <button mat-menu-item routerLink='/user-announcements' routerLinkActive="active">Ogłoszenia</button>      
+    <button mat-menu-item (click)="openUserProfile()">Profil</button>
     <button mat-menu-item routerLink='/edit-profile' routerLinkActive="active">Edytuj profil</button>
   </mat-menu>
 

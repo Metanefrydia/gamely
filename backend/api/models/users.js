@@ -24,12 +24,17 @@ const userSchema = new mongoose.Schema({
       numberOfHours: { type: Number }
   }],
   birthYear: {
-    type: Number, 
+    type: String, 
     required: false
   },
   description: {
     type: String, 
     required: false
+  },
+  imagePath: { 
+    type: String, 
+    required: false,
+    default: 'http://localhost:3000/images/placeholder-avatar.png'
   },
   hash: String,
   salt: String
@@ -61,7 +66,7 @@ userSchema.methods.generateJwt = function() {
         exp: parseInt(expiry.getTime() / 1000)
       },
       'MY_SECRET'
-    ); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    );
   };
 
 mongoose.model('User', userSchema);
