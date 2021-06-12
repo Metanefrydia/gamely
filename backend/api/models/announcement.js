@@ -22,10 +22,6 @@ const announcementSchema = new mongoose.Schema({
       type: Date,
       required: true
   },
-  type: {
-      type: String,
-      required: true
-  },
   mode: {
       type: String,
       required: true

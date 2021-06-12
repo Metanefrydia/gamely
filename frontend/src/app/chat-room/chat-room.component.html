@@ -6,8 +6,8 @@
     <h4>{{ 'POKÓJ ' + room }}</h4>
     <div class="message-container">
       <div class="message" *ngFor="let m of messages">
-        <div class="message-details" [ngClass]="{ me: m.id === name }">
-          <div class="sender">{{ m.id }}</div>
+        <div class="message-details">
+          <div class="sender" [ngClass]="{ 'me': m.id === name }">{{ m.id }}</div>
           <div class="message-text">{{ m.text }}</div>
         </div>
       </div>

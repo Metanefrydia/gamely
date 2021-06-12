@@ -42,6 +42,8 @@ h4 {
 .message-details {
     display: flex;
     margin-left: 10px;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 mat-form-field {
@@ -50,7 +52,9 @@ mat-form-field {
 
 .sender {
     margin-right: 10px;
-    font-weight: 'bold';
+    background-color: #333333;
+    padding: 8px 15px 8px 15px;
+    border-radius: 5px;
 }
 
 .message-input {
@@ -109,4 +113,8 @@ mat-form-field {
 .main-page-button {
     width: 150px;
     margin-bottom: 20px;
+}
+
+.me {
+    color: $primary;
 }

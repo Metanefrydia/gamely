@@ -51,6 +51,11 @@ export class EditProfileComponent implements OnInit {
       });
   }
 
+  public updateForm(numberOfHours: number, gameIndex: number) {
+    this.form.value.games[gameIndex].numberOfHours = numberOfHours;
+    this.form.controls["games"].setValue([...this.form.value.games]);
+  }
+
   public getRanks(game: string): string[] {
     if (game === '') {
       return [];
@@ -108,17 +113,21 @@ export class EditProfileComponent implements OnInit {
         this.form.value.games,
         this.form.value.image,
         this.form.value.email,
-        this.form.value.description
+        this.form.value.description,
       )
       .subscribe((response) => {
         this.openSnackBar('Zapisano dane!', 'Zamknij', {
           duration: 2000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
           panelClass: ['success-snackbar']
         });
       }),
       (err) => {
         this.openSnackBar('Wystąpił błąd. Spróbuj jeszcze raz.', 'Zamknij', {
           duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
           panelClass: ['error-snackbar']
         });
       };

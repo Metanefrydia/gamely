@@ -61,8 +61,8 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Ilość godzin w grze</mat-label>
-            <input [(value)]="userGame.numberOfHours" type="number" matInput
-              [name]="'number-of-hours-' + i">
+            <input [value]="userGame.numberOfHours" (change)="updateForm($any($event.target).value, i)" type="number"
+              matInput [name]="'number-of-hours-' + i">
           </mat-form-field>
         </div>
 

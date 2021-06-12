@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import {
   Announcement,
   AnnouncementMode,
-  AnnouncementType
 } from '../announcement.models';
 import { games } from '../game.models';
 import { AnnouncementsService } from '../service/announcements.service';
@@ -19,7 +18,6 @@ export class CreateAnnouncementComponent implements OnInit {
     title: '',
     game: games[0].name,
     mode: AnnouncementMode.UNRANKED,
-    type: AnnouncementType.PUBLIC,
     rank: '',
     members: [],
     maxMembers: 0,

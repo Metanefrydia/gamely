@@ -11,7 +11,7 @@ module.exports.getProfile = async (req, res) => {
       user: user,
     });
   } catch (err) {
-    res.status(401).json({
+    res.status(404).json({
       status: "error",
       message: err,
     });
